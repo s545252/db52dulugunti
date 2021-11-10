@@ -9,7 +9,8 @@ var usersRouter = require('./routes/users');
 var roseRouter = require('./routes/rose');
 var addmodsRouter = require('./routes/addmods');
 var selectorRouter = require('./routes/selector');
-var rose = require("./models/rose");
+var Rose = require("./models/rose");
+var resourceRouter = require('./routes/resource');
 var app = express();
 
 // view engine setup
@@ -27,6 +28,7 @@ app.use('/users', usersRouter);
 app.use('/rose', roseRouter);
 app.use('/addmods', addmodsRouter);
 app.use('/selector', selectorRouter);
+app.use('/resource', resourceRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -51,7 +53,7 @@ mongoose.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: t
 // We can seed the collection if needed on server start
 async function recreateDB(){
   // Delete everything
-  await rose.deleteMany();
+  await Rose.deleteMany();
  
  
   var results = [{"types":"Rosa Peace","colours":'Red',"cost":20},
@@ -59,7 +61,7 @@ async function recreateDB(){
                  {"types":"Memorial Rose", "colours":'White',"cost":15}]
  
  for(i in results){
-   let instance = new  Rose({types: results[i]["types"], colours: results[i]["colours"], cost:results[i]["cost"]});
+  let instance = new Rose({type: results[i]["types"], name: results[i]["colours"], cost:results[i]["cost"]});
    instance.save( function(err,doc) {
      if(err) return console.error(err);
      console.log("object added.")
