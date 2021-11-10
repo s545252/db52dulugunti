@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 var roseRouter = require('./routes/rose');
 var addmodsRouter = require('./routes/addmods');
 var selectorRouter = require('./routes/selector');
+var rose = require("./models/rose");
 var app = express();
 
 // view engine setup
@@ -41,5 +42,33 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+const connectionString = process.env.MONGO_CON
+
+mongoose = require('mongoose');
+mongoose.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: true});
+
+// We can seed the collection if needed on server start
+async function recreateDB(){
+  // Delete everything
+  await rose.deleteMany();
+ 
+ 
+  var results = [{"types":"Rosa Peace","colours":'Red',"cost":20},
+                 {"types":"New Year","colours":'Yellow',"cost":25},
+                 {"types":"Memorial Rose", "colours":'White',"cost":15}]
+ 
+ for(i in results){
+   let instance = new  Rose({types: results[i]["types"], colours: results[i]["colours"], cost:results[i]["cost"]});
+   instance.save( function(err,doc) {
+     if(err) return console.error(err);
+     console.log("object added.")
+     });
+ }
+ 
+ }
+ 
+ let reseed = true;
+ if (reseed) { recreateDB();}
 
 module.exports = app;
