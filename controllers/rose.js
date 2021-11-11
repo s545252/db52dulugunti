@@ -26,13 +26,30 @@ exports.rose_view_all_Page = async function(req, res) {
         res.send(`{"error": ${err}}`); 
     }   
 }; 
+
+exports.rose_create_post = async function(req, res) { 
+    console.log(req.body) 
+    let document = new Rose(); 
+    // We are looking for a body, since POST does not have query parameters. 
+    // Even though bodies can be in many different formats, we will be picky 
+    // and require that it be a json object 
+    // {"costume_type":"goat", "cost":12, "size":"large"} 
+    document.types = req.body.types; 
+    document.colours = req.body.colours; 
+    document.cost = req.body.cost; 
+    try{ 
+        let result = await document.save(); 
+        res.send(result); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
+}; 
+
 // for a specific Rose.
 exports.rose_detail = function(req, res) {
 res.send('NOT IMPLEMENTED: Rose detail: ' + req.params.id);
-};
-// Handle Rose create on POST.
-exports.rose_create_post = function(req, res) {
-res.send('NOT IMPLEMENTED: Rose create POST');
 };
 // Handle Rose delete form on DELETE.
 exports.rose_delete = function(req, res) {
