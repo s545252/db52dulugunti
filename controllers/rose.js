@@ -47,15 +47,38 @@ exports.rose_create_post = async function(req, res) {
     }   
 }; 
 
-// for a specific Rose.
-exports.rose_detail = function(req, res) {
-res.send('NOT IMPLEMENTED: Rose detail: ' + req.params.id);
-};
+exports.rose_detail = async function(req, res) { 
+    console.log("detail"  + req.params.id) 
+    try { 
+        result = await roses.findById( req.params.id) 
+        res.send(result) 
+    } catch (error) { 
+        res.status(500) 
+        res.send(`{"error": document for id ${req.params.id} not found`); 
+    } 
+}; 
+
+exports.rose_update_put = async function(req, res) { 
+    console.log(`update on id ${req.params.id} with body 
+${JSON.stringify(req.body)}`) 
+    try { 
+        let toUpdate = await roses.findById( req.params.id) 
+        // Do updates of properties 
+        if(req.body.types)  
+               toUpdate.types = req.body.types; 
+        if(req.body.colours) toUpdate.colours = req.body.colours; 
+        if(req.body.cost) toUpdate.size = req.body.cost; 
+        let result = await toUpdate.save(); 
+        console.log("Sucess " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": ${err}: Update for id ${req.params.id} 
+failed`); 
+    } 
+}; 
+
 // Handle Rose delete form on DELETE.
 exports.rose_delete = function(req, res) {
 res.send('NOT IMPLEMENTED: Rose delete DELETE ' + req.params.id);
-};
-// Handle Rose update form on PUT.
-exports.rose_update_put = function(req, res) {
-res.send('NOT IMPLEMENTED: Rose update PUT' + req.params.id);
 };
