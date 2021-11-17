@@ -19,5 +19,6 @@ router.get('/rose/:id', rose_controller.rose_detail);
 // GET request for list of all rose items.
 router.get('/rose', rose_controller.rose_list);
 /* GET detail rose page */
+router.get('/detail', rose_controller.rose_view_one_Page);
 
 module.exports = router;

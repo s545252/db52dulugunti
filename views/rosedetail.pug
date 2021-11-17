@@ -1,0 +1,20 @@
+extends layout
+block content
+ h1= title
+ - let roseid = toShow._id
+ - let rose_types  = toShow.types
+ - let rosecolours  = toShow.colours 
+ - let rosecost = toShow.cost
+ div
+    div.row
+      div(class='roseAttr mr-3') Rose Id is:
+      div #{roseid}
+    div.row
+      div(class='roseAttr mr-3') Rose Types is:
+      div #{rose_types}
+    div.row
+      div(class='roseAttr mr-3') Rose Colours is:
+      div #{rosecolours}
+    div.row
+      div(class='roseAttr mr-3') Rose Cost is:
+      div #{rosecost}

@@ -1,7 +1,7 @@
 var express = require('express'); 
-const rose_controlers= require('../controllers/rose'); 
+const rose_controller= require('../controllers/rose'); 
 var router = express.Router(); 
  
-/* GET costumes */ 
-router.delete('/rose/:id', rose_controlers.rose_delete);
+/* GET roses */ 
+router.get('/detail', rose_controller.rose_view_one_Page);
 module.exports = router; 
