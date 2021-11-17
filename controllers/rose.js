@@ -104,3 +104,17 @@ exports.rose_delete = async function(req, res) {
         res.send(`{"error": Error deleting ${err}}`); 
     } 
 }; 
+
+ // Handle building the view for creating a costume. 
+// No body, no in path parameter, no query. 
+// Does not need to be async 
+exports.rose_create_Page = function(req, res) {
+    console.log("create view")
+    try{
+    res.render('rosecreate', { title: 'Rose Create'});
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+   }; 

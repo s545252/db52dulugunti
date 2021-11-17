@@ -20,5 +20,6 @@ router.get('/rose/:id', rose_controller.rose_detail);
 router.get('/rose', rose_controller.rose_list);
 /* GET detail rose page */
 router.get('/detail', rose_controller.rose_view_one_Page);
-
+/* GET create rose page */ 
+router.get('/create', rose_controller.rose_create_Page); 
 module.exports = router;
