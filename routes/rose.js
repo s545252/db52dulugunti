@@ -3,5 +3,5 @@ const rose_controlers= require('../controllers/rose');
 var router = express.Router(); 
  
 /* GET costumes */ 
-router.put('/rose/:id', rose_controlers.rose_update_put); 
+router.delete('/rose/:id', rose_controlers.rose_delete);
 module.exports = router; 

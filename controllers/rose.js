@@ -78,7 +78,15 @@ failed`);
     } 
 }; 
 
-// Handle Rose delete form on DELETE.
-exports.rose_delete = function(req, res) {
-res.send('NOT IMPLEMENTED: Rose delete DELETE ' + req.params.id);
-};
+// Handle nameume delete form on DELETE.
+exports.rose_delete = async function(req, res) { 
+    console.log("delete "  + req.params.id) 
+    try { 
+        result = await roses.findByIdAndDelete( req.params.id) 
+        console.log("Removed " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": Error deleting ${err}}`); 
+    } 
+}; 

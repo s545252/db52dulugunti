@@ -11,7 +11,7 @@ router.get('/', api_controller.api);
 // POST request for creating a rose.
 router.post('/rose', rose_controller.rose_create_post);
 // DELETE request to delete rose.
-router.delete('/rosess/:id', rose_controller.rose_delete);
+router.delete('/rose/:id', rose_controller.rose_delete);
 // PUT request to update rose.
 router.put('/rose/:id', rose_controller.rose_update_put);
 // GET request for one rose.
