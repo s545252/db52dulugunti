@@ -2,19 +2,19 @@ extends layout
 block content
  h1= title
  - let roseid = toShow._id
- - let rose_types  = toShow.types
- - let rosecolours  = toShow.colours 
- - let rosecost = toShow.cost
+ - let types  = toShow.types
+ - let colours  = toShow.colours 
+ - let cost = toShow.cost
  div
     div.row
-      div(class='roseAttr mr-3') Rose Id is:
+      div(class='roseAttr detailAttr mr-3') Rose Id is:
       div #{roseid}
     div.row
-      div(class='roseAttr mr-3') Rose Types is:
-      div #{rose_types}
+      div(class='roseAttr detailAttr mr-3') Rose Types is:
+      div #{types}
     div.row
-      div(class='roseAttr mr-3') Rose Colours is:
-      div #{rosecolours}
+      div(class='roseAttr detailAttr mr-3') Rose Colours is:
+      div #{colours}
     div.row
-      div(class='roseAttr mr-3') Rose Cost is:
-      div #{rosecost}
+      div(class='roseAttr detailAttr mr-3') Rose Cost is:
+      div #{cost}

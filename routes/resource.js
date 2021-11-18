@@ -24,4 +24,6 @@ router.get('/detail', rose_controller.rose_view_one_Page);
 router.get('/create', rose_controller.rose_create_Page); 
 /* GET create update page */ 
 router.get('/update', rose_controller.rose_update_Page); 
+/* GET create rose page */ 
+router.get('/delete', rose_controller.rose_delete_Page); 
 module.exports = router;
