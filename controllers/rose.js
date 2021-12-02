@@ -117,7 +117,7 @@ exports.rose_create_Page = function(req, res) {
     res.status(500)
     res.send(`{'error': '${err}'}`);
     }
-   }; 
+}; 
 
 // Handle building the view for updating a costume. 
 // query provides the id 

@@ -12,7 +12,7 @@ block content
         input#size(type='text', name='colours') 
     div.form-group 
         label.roseAttr(for='cost') Rose cost 
-        input#cost(type='number', name='cost') 
+        input#cost(type='number', name='cost' min=0, max=2) 
     input(type="submit") 
  
   script. 
@@ -25,10 +25,10 @@ block content
       }).then((resp) => { 
         return resp.text(); // or resp.text() or whatever the server sends 
       }).then((body) => { 
-        alert("Save succeded") 
+        alert("Rose cost Should be minimum of $2") 
         // TODO handle body 
       }).catch((error) => { 
-        // TODO handle error 
-        alert("Save failed " + error ) 
+        // TODO handle error
+        alert("Save failed " + error )
       }); 
     }); 

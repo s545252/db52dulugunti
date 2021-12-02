@@ -14,5 +14,6 @@ const secured = (req, res, next) => {
 //router.get('/delete', rose_controller.rose_delete_Page); 
 router.get('/', rose_controller.rose_view_all_Page);
 router.get('/update', secured, rose_controller.rose_update_Page); 
+router.get('/create', secured, rose_controller.rose_create_Page);
 
 module.exports = router;
